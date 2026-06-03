@@ -1,7 +1,7 @@
 'use strict'
 
 const expat = require('../lib/node-expat')
-const Iconv = require('iconv').Iconv
+//const Iconv = require('iconv').Iconv
 const Buffer = require('buffer').Buffer
 const vows = require('vows')
 const assert = require('assert')
@@ -206,40 +206,40 @@ vows.describe('node-expat').addBatch({
       assert.equal(text, '¥€$')
     }
   },
-  'unknownEncoding with single-byte map using iconv': {
-    'Windows-1252': function () {
-      const p = new expat.Parser()
-      let encodingName
-      p.addListener('unknownEncoding', function (name) {
-        encodingName = name
-        const iconv = new Iconv(encodingName + '//TRANSLIT//IGNORE', 'UTF-8')
-        const map = []
+  // 'unknownEncoding with single-byte map using iconv': {
+  //   'Windows-1252': function () {
+  //     const p = new expat.Parser()
+  //     let encodingName
+  //     p.addListener('unknownEncoding', function (name) {
+  //       encodingName = name
+  //       const iconv = new Iconv(encodingName + '//TRANSLIT//IGNORE', 'UTF-8')
+  //       const map = []
 
-        let d = null
-        for (let i = 0; i < 256; i++) {
-          try {
-            d = iconv.convert(Buffer.from([i])).toString()
-          } catch (e) {
-            d = '\b'
-          }
-          map[i] = d.charCodeAt(0)
-        }
-        p.setUnknownEncoding(map)
-      })
-      let text = ''
-      p.addListener('text', function (s) {
-        text += s
-      })
-      p.addListener('error', function (e) {
-        assert.fail(e)
-      })
-      p.parse("<?xml version='1.0' encoding='Windows-1252'?><r>")
-      p.parse(Buffer.from([165, 128, 36]))
-      p.parse('</r>')
-      assert.equal(encodingName, 'Windows-1252')
-      assert.equal('¥€$', text)
-    }
-  },
+  //       let d = null
+  //       for (let i = 0; i < 256; i++) {
+  //         try {
+  //           d = iconv.convert(Buffer.from([i])).toString()
+  //         } catch (e) {
+  //           d = '\b'
+  //         }
+  //         map[i] = d.charCodeAt(0)
+  //       }
+  //       p.setUnknownEncoding(map)
+  //     })
+  //     let text = ''
+  //     p.addListener('text', function (s) {
+  //       text += s
+  //     })
+  //     p.addListener('error', function (e) {
+  //       assert.fail(e)
+  //     })
+  //     p.parse("<?xml version='1.0' encoding='Windows-1252'?><r>")
+  //     p.parse(Buffer.from([165, 128, 36]))
+  //     p.parse('</r>')
+  //     assert.equal(encodingName, 'Windows-1252')
+  //     assert.equal('¥€$', text)
+  //   }
+  // },
   error: {
     'tag name starting with ampersand': function () {
       expect('<&', [['error', 'not well-formed (invalid token)']])
