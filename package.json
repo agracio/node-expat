@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "2.4.5",
+  "version": "2.4.6",
   "main": "./lib/node-expat",
   "gypfile": true,
   "description": "NodeJS binding for fast XML parsing.",
