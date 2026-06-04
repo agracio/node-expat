@@ -1,16 +1,15 @@
 # node-expat
 
-[![build status](https://img.shields.io/travis/astro/node-expat/master.svg?style=flat-square)](https://travis-ci.org/astro/node-expat/branches)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com/)
+### Fork of node-expat compatible with Node 26.
 
 ## Motivation
 
-You use [Node.js](https://nodejs.org) for speed? You process XML streams? Then you want the fastest XML parser: [libexpat](http://expat.sourceforge.net/)!
+You use [Node.js](https://nodejs.org) for speed? You process XML streams? Then you want the fastest XML parser: [libexpat](https://github.com/libexpat/libexpat)!
 
 ## Install
 
 ```
-npm install node-expat
+npm install @agracio/node-expat
 ```
 
 ## Usage
@@ -21,7 +20,7 @@ Important events emitted by a parser:
 (function () {
   "use strict";
 
-  var expat = require('node-expat')
+  var expat = require('@agracio/node-expat')
   var parser = new expat.Parser('UTF-8')
 
   parser.on('startElement', function (name, attrs) {

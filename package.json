@@ -1,6 +1,9 @@
 {
   "name": "@agracio/node-expat",
-  "version": "2.4.3",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "2.4.4",
   "main": "./lib/node-expat",
   "gypfile": true,
   "description": "NodeJS binding for fast XML parsing.",
@@ -43,9 +46,9 @@
     "standard": "^17.1.2",
     "vows": "^0.8.3"
   },
-  "repository": "github:PruvoNet/node-expat",
-  "homepage": "http://github.com/astro/node-expat",
-  "bugs": "https://github.com/PruvoNet/node-expat/issues",
+  "repository": "github:agracio/node-expat",
+  "homepage": "http://github.com/agracio/node-expat",
+  "bugs": "https://github.com/agracio/node-expat/issues",
   "author": {
     "name": "Astro",
     "email": "astro@spaceboyz.net",
