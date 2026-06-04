@@ -6,3 +6,4 @@ prebuilds/
 !.gitignore
 !.npmignore
 !.travis.yml
+*.tgz
