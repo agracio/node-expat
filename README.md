@@ -9,7 +9,7 @@ You use [Node.js](https://nodejs.org) for speed? You process XML streams? Then y
 ## Install
 
 ```
-npm install ag-node-expat
+npm install @agracio/node-expat
 ```
 
 ## Usage
@@ -20,7 +20,7 @@ Important events emitted by a parser:
 (function () {
   "use strict";
 
-  var expat = require('ag-node-expat')
+  var expat = require('@agracio/node-expat')
   var parser = new expat.Parser('UTF-8')
 
   parser.on('startElement', function (name, attrs) {
