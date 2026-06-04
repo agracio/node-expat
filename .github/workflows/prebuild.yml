@@ -15,7 +15,7 @@ permissions:
 # (platform, arch, libc) combination is produced. On consumer install,
 # prebuild-install downloads only the asset matching the consumer's runtime.
 env:
-  NODE_TARGETS: "22.22.3 24.16.0 26.3.0"
+  NODE_TARGETS: "20.20.2 22.22.3 24.16.0 26.3.0"
 
 jobs:
   prebuild:
