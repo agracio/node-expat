@@ -1,5 +1,5 @@
 {
-  "name": "@agracio/node-expat",
+  "name": "ag-node-expat",
   "publishConfig": {
     "access": "public"
   },
@@ -23,8 +23,13 @@
     "LICENSE",
     "README.md"
   ],
+  "binary": {
+    "module_name": "node_expat",
+    "host": "https://github.com",
+    "remote_path": "agracio/node-expat/releases/download/v{version}"
+  },
   "scripts": {
-    "install": "node-gyp rebuild --enable_thin_lto=false --enable_lto=false",
+    "install": "prebuild-install || node-gyp rebuild --enable_thin_lto=false --enable_lto=false",
     "rebuild": "node-gyp rebuild --enable_thin_lto=false --enable_lto=false",
     "preversion": "npm test",
     "lint": "standard",
@@ -34,7 +39,8 @@
   },
   "dependencies": {
     "nan": "^2.27.0",
-    "node-gyp": "^12.3.0"
+    "node-gyp": "^12.3.0",
+    "prebuild-install": "^7.1.3"
   },
   "devDependencies": {
     "benchmark": "^2.1.4",

@@ -1,9 +1,9 @@
 name: prebuild
 
 on:
-  # push:
-  #   branches: [master, main]
-  # pull_request:
+  push:
+    branches: [master, main]
+  pull_request:
   workflow_dispatch:
 
 # Least-privilege default: matrix jobs only need to read the repo to clone.
@@ -15,7 +15,7 @@ permissions:
 # (platform, arch, libc) combination is produced. On consumer install,
 # prebuild-install downloads only the asset matching the consumer's runtime.
 env:
-  NODE_TARGETS: "24.16.0 26.3.0"
+  NODE_TARGETS: "22.22.3 24.16.0 26.3.0"
 
 jobs:
   prebuild:
@@ -29,10 +29,10 @@ jobs:
           # macos-13 runners have very limited capacity. Apple Silicon clang
           # produces x86_64 binaries natively when asked with --arch x64.
           - id: darwin-x64
-            runner: macos-14
+            runner: macos-15-intel
             arch: x64
           - id: darwin-arm64
-            runner: macos-14
+            runner: macos-15
           - id: linux-x64-glibc
             runner: ubuntu-latest
           - id: linux-x64-musl
@@ -51,11 +51,11 @@ jobs:
             runner: windows-11-arm
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Set up Node (non-musl jobs)
         if: ${{ !matrix.musl }}
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version: '24'
 
@@ -151,7 +151,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Read version from package.json
         id: version
