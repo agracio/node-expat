@@ -83,5 +83,8 @@
       "type": "MIT"
     }
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "allowScripts": {
+    "es5-ext@0.10.64": true
+  }
 }
