@@ -1,6 +1,8 @@
 # node-expat
 
-### Fork of node-expat compatible with Node 26.
+> [!NOTE]  
+> This is a fork of node-expat compatible with Node 26.  
+> Provides pre-built libraries for NodeJs 20, 22, 24 and 26 using `prebuild-install`.  
 
 ## Motivation
 
@@ -12,6 +14,12 @@ You use [Node.js](https://nodejs.org) for speed? You process XML streams? Then y
 npm install ag-node-expat
 ```
 
+## Install as node-expat
+
+```
+npm install node-expat@npm:ag-node-expat
+```
+
 ## Usage
 
 Important events emitted by a parser:
@@ -20,7 +28,9 @@ Important events emitted by a parser:
 (function () {
   "use strict";
 
-  var expat = require('ag-node-expat')
+  var expat = require('node-expat') // if installed as node-expat
+
+  // var expat = require('ag-node-expat')  // if installed as ag-node-expat
   var parser = new expat.Parser('UTF-8')
 
   parser.on('startElement', function (name, attrs) {
